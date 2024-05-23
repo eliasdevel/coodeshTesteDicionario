@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "185032162327",
+    "project_id": "funnydictionary-10819",
+    "storage_bucket": "funnydictionary-10819.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185032162327:android:7ec4cfd098ac2729103052",
+        "android_client_info": {
+          "package_name": "com.funnydictionary.coodash"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOMlbOmqoKH4lNuS5qUaIbplzNoSLGdro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
