@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:funny_dictionary/data/entities/license.dart';
 import 'package:funny_dictionary/data/entities/meanings.dart';
 import 'package:funny_dictionary/data/entities/phonetics.dart';
@@ -13,16 +15,20 @@ class Word {
   List<Meanings>? meanings;
   License? license;
   List<String>? sourceUrls;
+  bool? favorite;
 
-  Word(
-      {this.word,
-      this.phonetic,
-      this.phonetics,
-      this.meanings,
-      this.license,
-      this.sourceUrls});
+  Word({
+    this.word,
+    this.phonetic,
+    this.phonetics,
+    this.meanings,
+    this.license,
+    this.sourceUrls,
+    this.favorite = false,
+  });
 
-  Word.fromJson(Map<String, dynamic> json) {
+  Word.fromJson(Map<String, dynamic> json, {bool? varFavorite = false}) {
+    favorite = varFavorite;
     word = json['word'];
     phonetic = json['phonetic'];
     if (json['phonetics'] != null) {
@@ -31,6 +37,7 @@ class Word {
         phonetics!.add(Phonetics.fromJson(v));
       });
     }
+
     if (json['meanings'] != null) {
       meanings = <Meanings>[];
       json['meanings'].forEach((v) {

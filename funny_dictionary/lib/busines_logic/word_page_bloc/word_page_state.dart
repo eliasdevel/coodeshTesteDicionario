@@ -4,12 +4,14 @@ abstract class WordPageState {}
 
 class WordPageStateInitialized extends WordPageState {
   WordPageStateInitialized(this.word);
+
   final String word;
 }
 
 class WordPageStateLoaded extends WordPageState {
-  WordPageStateLoaded(this.word, {required this.data});
+  WordPageStateLoaded(this.word, {required this.data, required this.favorite});
   String word;
+  bool favorite;
   Word data;
 }
 

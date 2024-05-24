@@ -2,8 +2,9 @@ class Definitions {
   String? definition;
   List<String>? synonyms;
   List<String>? antonyms;
+  String? example;
 
-  Definitions({this.definition, this.synonyms, this.antonyms});
+  Definitions({this.definition, this.synonyms, this.antonyms, this.example});
 
   Definitions.fromJson(Map<String, dynamic> json) {
     definition = json['definition'];
@@ -18,6 +19,9 @@ class Definitions {
       json['antonyms'].forEach((v) {
         antonyms!.add(v.toString());
       });
+    }
+    if (json.containsKey('example')) {
+      example = json['example'];
     }
   }
 

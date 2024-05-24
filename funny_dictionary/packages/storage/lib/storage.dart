@@ -17,8 +17,8 @@ class Storage {
   }
 
   static final List<String> _tables = [
-    'CREATE TABLE IF NOT EXISTS ${StorageTable.words.name} (id INTEGER PRIMARY KEY, name TEXT, insert_time INTEGER )',
-    'CREATE TABLE IF NOT EXISTS ${StorageTable.cachedWords.name} (id INTEGER PRIMARY KEY, name TEXT, insert_time INTEGER )'
+    'CREATE TABLE IF NOT EXISTS ${StorageTable.favoriteWords.name} (id INTEGER PRIMARY KEY, name TEXT, insert_time INTEGER )',
+    'CREATE TABLE IF NOT EXISTS ${StorageTable.cachedWords.name} (id INTEGER PRIMARY KEY, name TEXT, server_data BLOB, insert_time INTEGER )'
   ];
 
   /// Function save recives table name data an for update cases optional filter param
@@ -46,8 +46,15 @@ class Storage {
     return db?.insert(table.name, values);
   }
 
-  static Future<int?> delete(StorageTable table, {required int id}) async {
-    StorageFilter filter = idFilter(id);
+  static Future<int?> delete(StorageTable table,
+      {int? id, StorageFilter? filter}) async {
+    if (id != null) {
+      filter = idFilter(id);
+    }
+
+    if (filter == null) {
+      throw Exception("Not avaliable to delete withaut filter");
+    }
 
     return db?.delete(table.name,
         where: filter.getFilterWhere(), whereArgs: filter.arguments);
@@ -88,4 +95,4 @@ class StorageFilter {
   }
 }
 
-enum StorageTable { words, cachedWords }
+enum StorageTable { favoriteWords, cachedWords }

@@ -7,7 +7,8 @@ class WordPageEventInit extends WordPageEvent {
   final String word;
 }
 
-class WordPageEventPlayAudio extends WordPageEvent {
-  WordPageEventPlayAudio(this.word);
+class WordPageEventFavoriteWord extends WordPageEvent {
+  WordPageEventFavoriteWord(this.word, this.favorite);
+  final bool favorite;
   final Word word;
 }

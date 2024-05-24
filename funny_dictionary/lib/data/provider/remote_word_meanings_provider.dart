@@ -12,6 +12,6 @@ class RemoteWordMeaningsProvider {
       throw Exception('Null Returned From server');
     }
 
-    return Word.fromJson(jsonDecode(response.data!)[0]);
+    return Word.fromJson(jsonDecode(response.data!)[0], varFavorite: false);
   }
 }
